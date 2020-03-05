@@ -2,7 +2,7 @@ image:
   file: .gitpod.Dockerfile
 ports:
   - port: 8787
-onOpen: open-preview
+    onOpen: open-preview
 tasks:
   - command: /usr/lib/rstudio-server/bin/rstudio-server start
 vscode:
