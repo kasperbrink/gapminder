@@ -6,3 +6,4 @@ RUN R -e 'remotes::install_cran("tibble")'
 RUN R -e 'remotes::install_cran("dockerfiler")'
 EXPOSE 8787
 ENV "PASSWORD"="password"
+USER root
