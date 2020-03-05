@@ -9,6 +9,9 @@
 create_gp_dockerfile <- function(FROM, AS, rstudio){
   # create a dockerfile
   dfile <- dockerfiler::dock_from_desc(FROM = FROM, AS = AS)
+  # remove the final two lines inserted by dock_from_desc
+  ldf <- length(dfile$Dockerfile)
+  dfile$remove_cmd((ldf-1):ldf)
   # if using a rstudio image open port 8787 and set password
   if(rstudio){
     dfile$EXPOSE(8787)
@@ -30,7 +33,7 @@ create_gp_yml <- function(rstudio){
                  "  file: .gitpod.Dockerfile",
                  "ports:",
                  "  - port: 8787",
-                 "onOpen: open-preview",
+                 "    onOpen: open-preview",
                  "tasks:",
                  "  - command: /usr/lib/rstudio-server/bin/rstudio-server start",
                  "vscode:",
