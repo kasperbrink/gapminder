@@ -6,8 +6,6 @@
 #'
 #' @return A Dockerfile Object.
 #' @export
-#'
-#' @examples
 create_gp_dockerfile <- function(FROM, AS = NULL, rstudio = TRUE){
   # create a dockerfile
   dfile <- dockerfiler::dock_from_desc(FROM = FROM, AS = AS)
@@ -21,6 +19,10 @@ create_gp_dockerfile <- function(FROM, AS = NULL, rstudio = TRUE){
 }
 
 
+#' Create  a .gitpd.yml file for R(studio)
+#'
+#' @return A yml file wrtitten to .gitpod.yml
+#' @export
 create_gp_yml <- function(){
   writeLines(c("image:",
                "  file: .gitpod.Dockerfile",
