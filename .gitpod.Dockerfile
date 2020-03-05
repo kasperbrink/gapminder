@@ -1,9 +1,9 @@
-FROM rocker/tidyverse:latest AS rstudio
-
-ENV "PASSWORD"="password"
-
-RUN R -e "install.packages(c('curl','openssl','git2r','gh','odbc','data.table', 'bigrquery', 'dockerfiler'), repos='http://cran.us.r-project.org')"
-
-
-
+FROM rocker/tidyverse:latest
+RUN R -e 'install.packages("remotes")'
+RUN R -e 'remotes::install_github("r-lib/remotes", ref = "6c8fdaa")'
+RUN R -e 'remotes::install_cran("tibble")'
+RUN R -e 'remotes::install_cran("dockerfiler")'
+COPY gapminder_*.tar.gz /app.tar.gz
+RUN remotes::install_local('/app.tar.gz')
 EXPOSE 8787
+ENV "PASSWORD"="password"

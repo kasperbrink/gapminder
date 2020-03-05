@@ -21,5 +21,6 @@ Suggests:
     testthat
 RoxygenNote: 6.1.1
 Imports:
-    tibble
+    tibble,
+    dockerfiler
 Encoding: UTF-8
