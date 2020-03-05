@@ -1,6 +1,6 @@
 FROM rocker/tidyverse:latest AS rstudio
 
-ENV PASSWORD=password
+ENV "PASSWORD"="password"
 
 RUN R -e "install.packages(c('curl','openssl','git2r','gh','odbc','data.table', 'bigrquery'), repos='http://cran.us.r-project.org')"
 
